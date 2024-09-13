@@ -42,7 +42,7 @@ async def on_message(message):
             try:
                 # Call the DALL-E API
                 response = client.images.generate(
-                    model="dall-e-3"
+                    model="dall-e-3",
                     prompt=wrapped_prompt,
                     n=1,
                     size="1024x1024",

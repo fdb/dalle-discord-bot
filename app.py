@@ -37,13 +37,17 @@ async def on_message(message):
             thinking_message = await message.channel.send("Thinking...")
 
             # Wrap the prompt for DALL-E
-            wrapped_prompt = f"Create an image with this prompt: {user_prompt}"
+            wrapped_prompt = f"Create the INVERSE of this prompt: {user_prompt}"
 
             try:
                 # Call the DALL-E API
-                response = client.images.generate(prompt=wrapped_prompt,
-                n=1,
-                size="1024x1024")
+                response = client.images.generate(
+                    model="dall-e-3"
+                    prompt=wrapped_prompt,
+                    n=1,
+                    size="1024x1024",
+                    quality="standard"
+                )
 
                 # Get the URL of the generated image
                 image_url = response.data[0].url
